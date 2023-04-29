@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 newVelocity = new Vector2(xSpeed, ySpeed);
         rigidbody.velocity = newVelocity;
-
+        
         if (newVelocity.magnitude != 0)
         {
             state = NewState(newVelocity);
