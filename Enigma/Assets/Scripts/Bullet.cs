@@ -6,14 +6,18 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 8;
     private Rigidbody2D bulletRigidbody;
+    private Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
         bulletRigidbody = GetComponent<Rigidbody2D>();
-        bulletRigidbody.velocity = transform.forward * speed;
-        
-        Destroy(gameObject, 3f);
+        target = FindObjectOfType<PlayerController>().transform;
+
+        Vector2 newVelocity = (target.position - transform.position).normalized;
+        bulletRigidbody.velocity = newVelocity * speed;
+
+        Destroy(gameObject, 5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
