@@ -9,9 +9,12 @@ public class BulletSpawner : MonoBehaviour
     public float spawnRateMax = 2f;
     public float spawnRate;
 
+    GameManager gamemanager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gamemanager = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnBullet());
     }
 
@@ -28,6 +31,9 @@ public class BulletSpawner : MonoBehaviour
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
         yield return new WaitForSeconds(spawnRate);
 
-        StartCoroutine(SpawnBullet());
+        if (!gamemanager.isGameover())
+        {
+            StartCoroutine(SpawnBullet());
+        }
     }
 }
