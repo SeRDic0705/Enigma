@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
         bulletRigidbody = GetComponent<Rigidbody2D>();
         bulletRigidbody.velocity = transform.forward * speed;
         
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 3f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
