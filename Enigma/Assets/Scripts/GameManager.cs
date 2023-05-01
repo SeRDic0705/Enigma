@@ -9,15 +9,22 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverText;
     public Text timeText;
     public Text bestscoreText;
+    public AudioClip ohoh;
+    public AudioClip explosion;
 
+    private AudioSource audio;
     private float score;
     private bool gameover;
 
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         score = 0;
         gameover = false;
+
+        audio.clip = ohoh;
+        audio.Play();
     }
 
     // Update is called once per frame
@@ -45,6 +52,9 @@ public class GameManager : MonoBehaviour
 
     public void Gameover()
     {
+        audio.clip = explosion;
+        audio.Play();
+
         gameover = true;
         gameoverText.SetActive(true);
 

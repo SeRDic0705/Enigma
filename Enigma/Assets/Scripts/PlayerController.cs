@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
     private Animator animator;
+    private State state = State.Down;
+
     public float speed = 8f;
-    State state = State.Down;
 
     // Start is called before the first frame update
     void Start()
