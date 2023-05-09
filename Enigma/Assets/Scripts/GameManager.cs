@@ -14,14 +14,15 @@ public class GameManager : MonoBehaviour
 
     private AudioSource audio;
     private float score;
-    private bool gameover;
+    //private bool isGameover;
+    public bool isGameover;
 
     // Start is called before the first frame update
     void Start()
     {
         audio = GetComponent<AudioSource>();
         score = 0;
-        gameover = false;
+        isGameover = false;
 
         audio.clip = ohoh;
         audio.Play();
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameover)
+        if (!isGameover)
         {
             score += Time.deltaTime;
             timeText.text = Mathf.Floor(score * 10f) / 10f + " sec";
@@ -44,18 +45,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool isGameover()
-    {
-        if (gameover) return true;
-        else return false;
-    }
-
     public void Gameover()
     {
         audio.clip = explosion;
         audio.Play();
 
-        gameover = true;
+        isGameover = true;
         gameoverText.SetActive(true);
 
         float bestScore = PlayerPrefs.GetFloat("BestScore");

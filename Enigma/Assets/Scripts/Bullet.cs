@@ -12,19 +12,18 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         bulletRigidbody = GetComponent<Rigidbody2D>();
-        target = FindObjectOfType<PlayerController>().transform;
-
-        Vector2 newVelocity = (target.position - transform.position).normalized;
+        target = FindObjectOfType<Player>().transform;
+        Vector2 newVelocity = (target.positin - transform.position).normalized;
         bulletRigidbody.velocity = newVelocity * speed;
 
         Destroy(gameObject, 5f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.tag == "Player")
+        if (other.tag == "Player")
         {
-            PlayerController player = collision.GetComponent<PlayerController>();
+            Player player = other.GetComponent<Player>();
             if (player != null)
             {
                 player.Die();

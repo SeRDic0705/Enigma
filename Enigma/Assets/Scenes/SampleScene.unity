@@ -897,6 +897,7 @@ MonoBehaviour:
   bestscoreText: {fileID: 1597105048}
   ohoh: {fileID: 8300000, guid: 96a293b790ed2aa49942ec142d6a4f76, type: 3}
   explosion: {fileID: 8300000, guid: 57804ddc10a8f074a85ccdde534241a7, type: 3}
+  isGameover: 0
 --- !u!4 &665214513
 Transform:
   m_ObjectHideFlags: 0
